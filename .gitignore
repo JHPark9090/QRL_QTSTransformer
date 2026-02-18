@@ -1,0 +1,17 @@
+# Checkpoints (large binary files)
+checkpoints/
+checkpoints_backup_v1/
+
+# Logs
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
