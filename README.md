@@ -249,6 +249,3 @@ for hybrid quantum-classical algorithms.
 Advanced Quantum Technologies, 2(12), 1900070.
 ```
 
-## Author
-
-Junghoon Kim — Lawrence Berkeley National Laboratory / UC Berkeley
