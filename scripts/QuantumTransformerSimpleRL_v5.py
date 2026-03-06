@@ -949,6 +949,12 @@ class QuantumSimpleRLAgent_v5:
         if self.phase == 1 and self.arch_optimizer is not None:
             self.arch_optimizer.step()
 
+        # Decay exploration rate per step (must match v1 behavior)
+        self.exploration_rate = max(
+            self.exploration_rate_min,
+            self.exploration_rate * self.exploration_rate_decay
+        )
+
         # Sync target network
         self.curr_step += 1
         if self.curr_step % self.sync_every == 0:
@@ -1225,12 +1231,6 @@ def train():
 
             if done:
                 break
-
-        # Decay exploration rate per episode (SimpleRL pattern)
-        agent.exploration_rate = max(
-            agent.exploration_rate_min,
-            agent.exploration_rate * agent.exploration_rate_decay
-        )
 
         # Record metrics
         metrics['rewards'].append(episode_reward)

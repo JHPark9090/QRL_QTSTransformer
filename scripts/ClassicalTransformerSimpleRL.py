@@ -386,6 +386,12 @@ class ClassicalSimpleRLAgent:
         torch.nn.utils.clip_grad_norm_(self.online_net.parameters(), 10.0)
         self.optimizer.step()
 
+        # Decay exploration rate per step (matches v1 behavior)
+        self.exploration_rate = max(
+            self.exploration_rate_min,
+            self.exploration_rate * self.exploration_rate_decay
+        )
+
         # Sync target network
         self.curr_step += 1
         if self.curr_step % self.sync_every == 0:
@@ -546,12 +552,6 @@ def train():
 
             if done:
                 break
-
-        # Decay exploration rate per episode
-        agent.exploration_rate = max(
-            agent.exploration_rate_min,
-            agent.exploration_rate * agent.exploration_rate_decay
-        )
 
         # Record metrics
         metrics['rewards'].append(episode_reward)
