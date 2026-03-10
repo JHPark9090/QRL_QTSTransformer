@@ -86,7 +86,7 @@ MAX_STEPS=500
 
 # Anti-forgetting parameters
 SYNC_EVERY=500
-LR_REDUCE_PATIENCE=50
+LR_REDUCE_PATIENCE="${LR_REDUCE_PATIENCE:-50}"
 LR_REDUCE_FACTOR=0.5
 LR_MIN=0.00001
 
@@ -121,7 +121,7 @@ case "$ENV" in
 esac
 
 SEED=2025
-LOG_INDEX=1
+LOG_INDEX="${LOG_INDEX:-1}"
 DEVICE="cuda"
 
 # Build ablation flags

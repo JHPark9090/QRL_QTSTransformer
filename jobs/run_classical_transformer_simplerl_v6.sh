@@ -2,7 +2,7 @@
 #SBATCH --account=m4807_g
 #SBATCH --constraint=gpu&hbm80g
 #SBATCH --qos=shared
-#SBATCH --time=12:00:00
+#SBATCH --time=48:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-task=1
